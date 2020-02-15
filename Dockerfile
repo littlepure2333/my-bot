@@ -5,16 +5,17 @@ RUN mkdir /my-macpro-bot
 WORKDIR /my-macpro-bot
 COPY ./my-macpro-bot .
 
-# check if the WORKDIR is right
-RUN ls
-
 # install vim to edit files
 RUN apt-get -y update \
-    && apt-get -y install vim \
-    && echo "vim installed"
+    && apt-get -y install vim
+
+# add taobao accelerator if you are at home
+# RUN npm config set registry https://registry.npm.taobao.org
 
 # install wechaty, macpro-puppet and babel-node
-RUN npm install \
-    && echo "wechaty, macpro-puppet and babel-node installed"
+RUN npm install \ 
+    # to see detailed log in npm install
+    # npm install --loglevel verbose
+    && npm cache clean
 
 ENTRYPOINT [ "/bin/bash" ]
