@@ -16,6 +16,6 @@ RUN apt-get -y update \
 RUN npm install \ 
     # to see detailed log in npm install
     # npm install --loglevel verbose
-    && npm cache clean
+    && npm cache clean --force
 
 ENTRYPOINT [ "/bin/bash" ]
