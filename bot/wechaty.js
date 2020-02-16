@@ -1,26 +1,13 @@
-// import {Wechaty} from 'wechaty'
-// import {PuppetMacpro} from 'wechaty-puppet-macpro'
-// import {generate} from 'qrcode-terminal'
-
 var Wechaty = require("wechaty")
 var PuppetMacpro = require("wechaty-puppet-macpro")
 var generate = require("qrcode-terminal")
 
-const token = ${{ secrets.TOKEN }}
+const token = process.env.TOKEN
 const name  = "littlepure's bot"
-
-// const puppet = new PuppetMacpro({
-//   token,
-// })
 
 const puppet = new PuppetMacpro.PuppetMacpro({
     token,
     })
-
-// const bot = new Wechaty({
-//   puppet,
-//   name, // login without scan qrcode at next time, it will generate xxxx.memory-card.json and save login data.
-// })
 
 const bot = new Wechaty.Wechaty({
     puppet,
